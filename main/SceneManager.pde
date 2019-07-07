@@ -24,11 +24,15 @@ class SceneManager{
           sceneControlFlag += 1;
         }
       }
+      
     }else if(sceneControlFlag == 1){
       line(0,height/2,width,height/2);
       time.display();
       time.updateTime();
+      
     }else if(sceneControlFlag == 2){
+      //make game over menu here
+      
     }else{
       line(0,height/2,width,height/2);
       fill(0);
