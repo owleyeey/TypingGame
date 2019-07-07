@@ -1,4 +1,4 @@
-Timer time;
+//Timer time;
 
 //void setup(){
   //size(300, 400);

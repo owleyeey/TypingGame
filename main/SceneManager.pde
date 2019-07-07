@@ -1,4 +1,5 @@
 class SceneManager{
+  
   //flag to control scene 
   int sceneControlFlag = 0;
   
@@ -18,7 +19,15 @@ class SceneManager{
       textAlign(CENTER);
       text("描き歌タイピング",width/2,height/5);
       button(width/2,height/2,width/2,height/2+10,"スタート");
+      if(isMouseInside(width/2,height/2,160,40)){
+        if(mousePressed == true){
+          sceneControlFlag += 1;
+        }
+      }
     }else if(sceneControlFlag == 1){
+      line(0,height/2,width,height/2);
+      time.display();
+      time.updateTime();
     }else if(sceneControlFlag == 2){
     }else{
     }
@@ -46,6 +55,7 @@ class SceneManager{
     }
     return false;
   }
+  
   
   void drawTitleText(){
   }
