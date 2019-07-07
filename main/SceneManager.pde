@@ -30,18 +30,25 @@ class SceneManager{
       time.updateTime();
     }else if(sceneControlFlag == 2){
     }else{
+      line(0,height/2,width,height/2);
+      fill(0);
+      textSize(50);
+      textAlign(CENTER);
+      text("ゲームクリア！！",width/2,height/2+50);
+      button(width/2,height/2+100,width/2,height/2+110,"スタート画面に戻る");
     }
   }
   
   //please use this function when you want to make a button
+  //rectMode is setting by "CENTER"
   void button(int rectX,int rectY,int textX,int textY,String s){
       fill(255);
-      if(isMouseInside(rectX,rectY,160,40) == true){
+      if(isMouseInside(rectX,rectY,200,40) == true){
         fill(255,0,0);
       }
-      rect(rectX,rectY,160,40);
+      rect(rectX,rectY,200,40);
       fill(0);
-      if(isMouseInside(rectX,rectY,160,40) == true){
+      if(isMouseInside(rectX,rectY,200,40) == true){
         fill(255);
       }
       textSize(20);
