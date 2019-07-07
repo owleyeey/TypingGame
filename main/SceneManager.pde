@@ -15,16 +15,36 @@ class SceneManager{
     if(sceneControlFlag == 0){
       fill(0);
       textSize(50);
-      text("描き歌タイピング",width/6,height/5);
-      fill(255);
-      rect(width/2,height/2,160,40);
-      fill(0);
-      textSize(20);
-      text("スタート",width/2-40,height/2+10);
+      textAlign(CENTER);
+      text("描き歌タイピング",width/2,height/5);
+      button(width/2,height/2,width/2,height/2+10,"スタート");
     }else if(sceneControlFlag == 1){
     }else if(sceneControlFlag == 2){
     }else{
     }
+  }
+  
+  //please use this function when you want to make a button
+  void button(int rectX,int rectY,int textX,int textY,String s){
+      fill(255);
+      if(isMouseInside(rectX,rectY,160,40) == true){
+        fill(255,0,0);
+      }
+      rect(rectX,rectY,160,40);
+      fill(0);
+      if(isMouseInside(rectX,rectY,160,40) == true){
+        fill(255);
+      }
+      textSize(20);
+      text(s,textX,textY);
+  }
+  
+  //function to check that mouse cursor is inside or outside 
+  Boolean isMouseInside(int rectX,int rectY,int rectW,int rectH){
+    if(mouseX >= rectX-rectW/2 && mouseX <= rectX+rectW/2 && mouseY >= rectY-rectH/2 && mouseY <= rectY+rectH/2){
+      return true;
+    }
+    return false;
   }
   
   void drawTitleText(){
