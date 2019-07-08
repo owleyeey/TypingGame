@@ -1,8 +1,18 @@
 class SceneManager{
+  String[] typingTextList;
   
+  //this is a length of typing text
+  int typinglength;
+  
+  SceneManager(int lengths){
+    typinglength = lengths;
+    typingTextList = new String[typinglength];
+  }
+  
+
   //flag to control scene 
   int sceneControlFlag = 0;
-  
+
   //function to display scenes
   void playScene(){
     //##################################//

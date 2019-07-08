@@ -1,11 +1,21 @@
 //**************main****************/
 SceneManager s;
 Timer time;
+TypingText typing;
 
 void setup(){
   size(600,600);
-  s = new SceneManager();
+  
+  int typinglength;
+  typing = new TypingText();
+  typinglength = typing.getTextLength();
+  
+  s = new SceneManager(typinglength);
   time = new Timer();
+  
+  for(int i=0; i<typinglength; i++){
+    s.typingTextList[i] = typing.text[i];
+  }
   
   //you can change default time 
   time.changeTime(20);
@@ -15,6 +25,7 @@ void setup(){
   textFont(font);
   
   rectMode(CENTER);
+  
   
 }
 
