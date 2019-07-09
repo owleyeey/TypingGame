@@ -16,7 +16,7 @@ class InputForm {
   }
 
   public void removeInputForm() {
-    observers.remove(this);
+    observers.remove(typedCharSender);
   }
   
   public void display() {
