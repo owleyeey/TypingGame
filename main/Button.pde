@@ -37,7 +37,7 @@ class Button{
     rect(x,y,w,h);
     
     //draw text
-    textSize(25);
+    textSize(20);
     textAlign(CENTER,CENTER);
     if(isInside()) fill(textColorIn);
     else           fill(textColorOut);

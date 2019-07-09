@@ -14,7 +14,7 @@ class SceneManager{
   
 
   //flag to control scene 
-  int sceneControlFlag = 0;
+  int sceneControlFlag = 3;
 
   //function to display scenes
   void playScene(){
@@ -52,10 +52,8 @@ class SceneManager{
       textAlign(CENTER);
       text("ゲームクリア！！",width/2,height/2+50);
       gameclearMenuButton.display();
-      if(isMouseInside(width/2,height/2,160,40)){
-        if(mousePressed == true){
+      if(mousePressed == true && gameclearMenuButton.isInside()){
           sceneControlFlag = 0;
-        }
       }
     }
   }
