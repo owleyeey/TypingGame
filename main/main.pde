@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //**************main****************/
 import java.util.HashSet;
 
@@ -31,10 +32,14 @@ void setup(){
   
   rectMode(CENTER);
   
+=======
+void setup(){
+>>>>>>> 1f7e9d772ace3807e24dd27c3d6eb5e1f4028886
   
 }
 
 void draw(){
+<<<<<<< HEAD
   background(255);
   s.playScene();
 }
@@ -49,4 +54,7 @@ void keyReleased() {
   for(KeyManipulateObserver elem : observers) {
     elem.onRelease(keyCode);
   }
+=======
+
+>>>>>>> 1f7e9d772ace3807e24dd27c3d6eb5e1f4028886
 }
