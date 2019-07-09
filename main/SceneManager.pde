@@ -1,6 +1,8 @@
 class SceneManager{
   
   String[] typingTextList;
+  Button startMenuButton = new Button(width/2,height/2,200,40,"スタート");
+  Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
   
   //a length of typing texts
   int typinglength;
@@ -29,11 +31,9 @@ class SceneManager{
       textSize(50);
       textAlign(CENTER);
       text("描き歌タイピング",width/2,height/5);
-      button(width/2,height/2,width/2,height/2+10,"スタート");
-      if(isMouseInside(width/2,height/2,160,40)){
-        if(mousePressed == true){
-          sceneControlFlag += 1;
-        }
+      startMenuButton.display();
+      if(mousePressed == true && startMenuButton.isInside()){
+        sceneControlFlag = 1;
       }
       
     }else if(sceneControlFlag == 1){
@@ -51,7 +51,7 @@ class SceneManager{
       textSize(50);
       textAlign(CENTER);
       text("ゲームクリア！！",width/2,height/2+50);
-      button(width/2,height/2+100,width/2,height/2+110,"スタート画面に戻る");
+      gameclearMenuButton.display();
       if(isMouseInside(width/2,height/2,160,40)){
         if(mousePressed == true){
           sceneControlFlag = 0;
