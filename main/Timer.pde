@@ -30,11 +30,13 @@ class Timer{
   
   public void changeTime(int x){
     second = x;
-  } 
+  }
   
   public void display(){
     fill(0);
     textSize(20);
-    text(time.second, width/10, height/10);
+    textAlign(CENTER);
+    text(second, width/10, height/10);
   }
+  
 }
