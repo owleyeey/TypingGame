@@ -57,35 +57,5 @@ class SceneManager{
       }
     }
   }
-  
-  //please use this function when you want to make a button
-  //rectMode is setting by "CENTER"
-  void button(int rectX,int rectY,int textX,int textY,String s){
-      fill(255);
-      if(isMouseInside(rectX,rectY,200,40) == true){
-        fill(255,0,0);
-      }
-      rect(rectX,rectY,200,40);
-      fill(0);
-      if(isMouseInside(rectX,rectY,200,40) == true){
-        fill(255);
-      }
-      textSize(20);
-      text(s,textX,textY);
-  }
-  
-  //function to check that mouse cursor is inside or outside 
-  Boolean isMouseInside(int rectX,int rectY,int rectW,int rectH){
-    if(mouseX >= rectX-rectW/2 && mouseX <= rectX+rectW/2 && mouseY >= rectY-rectH/2 && mouseY <= rectY+rectH/2){
-      return true;
-    }
-    return false;
-  }
-  
-  
-  void drawTitleText(){
-  }
-  
-  void isKeyPressed(){
-  }
+      
 }
