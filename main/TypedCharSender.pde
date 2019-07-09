@@ -1,3 +1,12 @@
+// このクラスのインスタンスは、
+// Lavelインスタンスを1つだけ入力ターゲットとして持つ。
+// onPress(int)は、キーが入力された時に実行するように
+// クラス外で調整すること。
+// onRelease(int)は、キーが離された時に実行するように
+// クラス外で調整すること。
+// そうすることでこのクラスは
+// 入力された文字を入力ターゲットのラベルに送信する。
+
 class TypedCharSender implements KeyManipulateObserver {
   private final int SHIFT_KEY = 16;
   private final int BACKSPACE_KEY = 8;
