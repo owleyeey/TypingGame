@@ -1,11 +1,11 @@
 class SceneManager{
   
   String[] typingTextList;
-  Button startMenuButton = new Button(width/2,height/2,200,40,"スタート");
+  Button startMenuButton     = new Button(width/2,height/2,200,40,"スタート");
   Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
-  Button easingButton = new Button(width/2,height/2+100,240,40,"難易度を下げてリトライ");
-  Button retryButton = new Button(width/2,height/2+150,240,40,"リトライ");
-  Button toTitleButton = new Button(width/2,height/2+200,240,40,"スタート画面に戻る");
+  Button easingButton        = new Button(width/2,height/2+100,240,40,"難易度を下げてリトライ");
+  Button retryButton         = new Button(width/2,height/2+150,240,40,"リトライ");
+  Button toTitleButton       = new Button(width/2,height/2+200,240,40,"スタート画面に戻る");
 
   
   //a length of typing texts
@@ -18,7 +18,7 @@ class SceneManager{
   
 
   //flag to control scene 
-  int sceneControlFlag = 2;
+  int sceneControlFlag = 0;
 
   //function to display scenes
   void playScene(){
