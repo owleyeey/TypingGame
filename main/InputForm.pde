@@ -22,4 +22,8 @@ class InputForm {
   public void display() {
     label.display();
   }
+
+  public String getText() {
+    return label.getText();
+  }
 }
