@@ -1,7 +1,14 @@
 class SceneManager{
-  String[] typingTextList;
   
-  //this is a length of typing text
+  String[] typingTextList;
+  Button startMenuButton = new Button(width/2,height/2,200,40,"スタート");
+  Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
+  Button easingButton = new Button(width/2,height/2+100,240,40,"難易度を下げてリトライ");
+  Button retryButton = new Button(width/2,height/2+150,240,40,"リトライ");
+  Button toTitleButton = new Button(width/2,height/2+200,240,40,"スタート画面に戻る");
+
+  
+  //a length of typing texts
   int typinglength;
   
   SceneManager(int lengths){
@@ -11,7 +18,7 @@ class SceneManager{
   
 
   //flag to control scene 
-  int sceneControlFlag = 0;
+  int sceneControlFlag = 2;
 
   //function to display scenes
   void playScene(){
@@ -28,11 +35,9 @@ class SceneManager{
       textSize(50);
       textAlign(CENTER);
       text("描き歌タイピング",width/2,height/5);
-      button(width/2,height/2,width/2,height/2+10,"スタート");
-      if(isMouseInside(width/2,height/2,160,40)){
-        if(mousePressed == true){
-          sceneControlFlag += 1;
-        }
+      startMenuButton.display();
+      if(mousePressed == true && startMenuButton.isInside()){
+        sceneControlFlag = 1;
       }
       
     }else if(sceneControlFlag == 1){
@@ -40,47 +45,41 @@ class SceneManager{
       time.display();
       time.updateTime();
       
+      if(time.isTimeUp()) sceneControlFlag = 2;
     }else if(sceneControlFlag == 2){
       //make game over menu here
       
+      line(0,height/2,width,height/2);
+      fill(0);
+      textSize(50);
+      textAlign(CENTER);
+      text("ゲームオーバー",width/2,height/2+50);
+      easingButton.display();
+      if(mousePressed == true && easingButton.isInside()){
+        // ease the difficulty (not done yet)
+        
+          sceneControlFlag = 1;
+      }
+      retryButton.display();
+      if(mousePressed == true && retryButton.isInside()){
+          sceneControlFlag = 1;
+      }
+      toTitleButton.display();
+      if(mousePressed == true && toTitleButton.isInside()){
+          sceneControlFlag = 0;
+      }
+  
     }else{
       line(0,height/2,width,height/2);
       fill(0);
       textSize(50);
       textAlign(CENTER);
       text("ゲームクリア！！",width/2,height/2+50);
-      button(width/2,height/2+100,width/2,height/2+110,"スタート画面に戻る");
+      gameclearMenuButton.display();
+      if(mousePressed == true && gameclearMenuButton.isInside()){
+          sceneControlFlag = 0;
+      }
     }
   }
-  
-  //please use this function when you want to make a button
-  //rectMode is setting by "CENTER"
-  void button(int rectX,int rectY,int textX,int textY,String s){
-      fill(255);
-      if(isMouseInside(rectX,rectY,200,40) == true){
-        fill(255,0,0);
-      }
-      rect(rectX,rectY,200,40);
-      fill(0);
-      if(isMouseInside(rectX,rectY,200,40) == true){
-        fill(255);
-      }
-      textSize(20);
-      text(s,textX,textY);
-  }
-  
-  //function to check that mouse cursor is inside or outside 
-  Boolean isMouseInside(int rectX,int rectY,int rectW,int rectH){
-    if(mouseX >= rectX-rectW/2 && mouseX <= rectX+rectW/2 && mouseY >= rectY-rectH/2 && mouseY <= rectY+rectH/2){
-      return true;
-    }
-    return false;
-  }
-  
-  
-  void drawTitleText(){
-  }
-  
-  void isKeyPressed(){
-  }
+      
 }
