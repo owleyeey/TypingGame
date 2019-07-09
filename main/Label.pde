@@ -31,4 +31,8 @@ class Label {
     textAlign(LEFT, CENTER);
     text(text, x, y);
   }
+  
+  public String getText() {
+    return text;
+  }
 }
