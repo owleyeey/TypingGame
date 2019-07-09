@@ -1,7 +1,8 @@
 class SceneManager{
+  
   String[] typingTextList;
   
-  //this is a length of typing text
+  //a length of typing texts
   int typinglength;
   
   SceneManager(int lengths){
@@ -40,6 +41,7 @@ class SceneManager{
       time.display();
       time.updateTime();
       
+      if(time.isTimeUp()) sceneControlFlag=3;
     }else if(sceneControlFlag == 2){
       //make game over menu here
       
@@ -50,6 +52,11 @@ class SceneManager{
       textAlign(CENTER);
       text("ゲームクリア！！",width/2,height/2+50);
       button(width/2,height/2+100,width/2,height/2+110,"スタート画面に戻る");
+      if(isMouseInside(width/2,height/2,160,40)){
+        if(mousePressed == true){
+          sceneControlFlag = 0;
+        }
+      }
     }
   }
   
