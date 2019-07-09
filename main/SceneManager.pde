@@ -3,6 +3,10 @@ class SceneManager{
   String[] typingTextList;
   Button startMenuButton = new Button(width/2,height/2,200,40,"スタート");
   Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
+  Button easingButton = new Button(width/2,height/2+100,240,40,"難易度を下げてリトライ");
+  Button retryButton = new Button(width/2,height/2+150,240,40,"リトライ");
+  Button toTitleButton = new Button(width/2,height/2+200,240,40,"スタート画面に戻る");
+
   
   //a length of typing texts
   int typinglength;
@@ -14,7 +18,7 @@ class SceneManager{
   
 
   //flag to control scene 
-  int sceneControlFlag = 3;
+  int sceneControlFlag = 2;
 
   //function to display scenes
   void playScene(){
@@ -41,10 +45,30 @@ class SceneManager{
       time.display();
       time.updateTime();
       
-      if(time.isTimeUp()) sceneControlFlag=3;
+      if(time.isTimeUp()) sceneControlFlag = 2;
     }else if(sceneControlFlag == 2){
       //make game over menu here
       
+      line(0,height/2,width,height/2);
+      fill(0);
+      textSize(50);
+      textAlign(CENTER);
+      text("ゲームオーバー",width/2,height/2+50);
+      easingButton.display();
+      if(mousePressed == true && easingButton.isInside()){
+        // ease the difficulty (not done yet)
+        
+          sceneControlFlag = 1;
+      }
+      retryButton.display();
+      if(mousePressed == true && retryButton.isInside()){
+          sceneControlFlag = 1;
+      }
+      toTitleButton.display();
+      if(mousePressed == true && toTitleButton.isInside()){
+          sceneControlFlag = 0;
+      }
+  
     }else{
       line(0,height/2,width,height/2);
       fill(0);
