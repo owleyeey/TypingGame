@@ -11,4 +11,12 @@ class InputForm {
   public void display() {
     label.display();
   }
+  
+  public void removeInputForm() {
+    observers.remove(typedCharSender);
+  }
+
+  public String getText() {
+    return label.getText();
+  }
 }
