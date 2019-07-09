@@ -7,7 +7,7 @@ class InputForm {
     typedCharSender = new TypedCharSender(label);
   }
   
-  private void display() {
+  public void display() {
     label.display();
   }
 }
