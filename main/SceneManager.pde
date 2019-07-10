@@ -1,6 +1,11 @@
 class SceneManager{
   
   String[] typingTextList;
+  
+  InputForm input;
+  
+  Timer time;
+  
   Button startMenuButton     = new Button(width/2,height/2,200,40,"スタート");
   Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
   Button easingButton        = new Button(width/2,height/2+100,240,40,"難易度を下げてリトライ");
@@ -38,12 +43,18 @@ class SceneManager{
       startMenuButton.display();
       if(mousePressed == true && startMenuButton.isInside()){
         sceneControlFlag = 1;
+        input = new InputForm(width/2,height/2+100);
+        time = new Timer();
+        //you can change default time 
+        time.changeTime(20);
       }
       
     }else if(sceneControlFlag == 1){
       line(0,height/2,width,height/2);
       time.display();
       time.updateTime();
+      
+      input.display();
       
       if(time.isTimeUp()) sceneControlFlag = 2;
     }else if(sceneControlFlag == 2){
@@ -59,10 +70,18 @@ class SceneManager{
         // ease the difficulty (not done yet)
         
           sceneControlFlag = 1;
+          input = new InputForm(width/2,height/2+100);
+          time = new Timer();
+          //you can change default time 
+          time.changeTime(20);
       }
       retryButton.display();
       if(mousePressed == true && retryButton.isInside()){
           sceneControlFlag = 1;
+          input = new InputForm(width/2,height/2+100);
+          time = new Timer();
+          //you can change default time 
+          time.changeTime(20);
       }
       toTitleButton.display();
       if(mousePressed == true && toTitleButton.isInside()){
