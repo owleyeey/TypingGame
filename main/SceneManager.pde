@@ -1,10 +1,10 @@
 class SceneManager{
-  
-  String[] typingTextList;
-  
+
+  TypingText typing;  
   InputForm input;
-  
   Timer time;
+  
+  JudgeAnswer judge = new JudgeAnswer();
   
   Button startMenuButton     = new Button(width/2,height/2,200,40,"スタート");
   Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
@@ -13,17 +13,14 @@ class SceneManager{
   Button toTitleButton       = new Button(width/2,height/2+200,240,40,"スタート画面に戻る");
 
   
-  //a length of typing texts
-  int typinglength;
-  
-  SceneManager(int lengths){
-    typinglength = lengths;
-    typingTextList = new String[typinglength];
-  }
-  
-
   //flag to control scene 
   int sceneControlFlag = 0;
+  
+  //setup the default question number
+  int questionNum = 0;
+  
+  //setup the time limits
+  int timeLimits = 20;
 
   //function to display scenes
   void playScene(){
@@ -43,10 +40,9 @@ class SceneManager{
       startMenuButton.display();
       if(mousePressed == true && startMenuButton.isInside()){
         sceneControlFlag = 1;
-        input = new InputForm(width/2,height/2+100);
-        time = new Timer();
+        makingObjectsForReset();
         //you can change default time 
-        time.changeTime(20);
+        time.changeTime(timeLimits);
       }
       
     }else if(sceneControlFlag == 1){
@@ -54,7 +50,19 @@ class SceneManager{
       time.display();
       time.updateTime();
       
+      //display inputform
       input.display();
+      //display question
+      typing.display(questionNum);
+      
+      //if inputtext are equal with question, add 1 to qustion number
+      if(judge.isCorrect(input.label.text,typing.text[questionNum]) && questionNum < typing.text.length){
+        //reset input text
+        input.label.text = "";
+        if(questionNum != typing.text.length-1){
+          questionNum += 1;
+        }
+      }
       
       if(time.isTimeUp()) sceneControlFlag = 2;
     }else if(sceneControlFlag == 2){
@@ -70,22 +78,23 @@ class SceneManager{
         // ease the difficulty (not done yet)
         
           sceneControlFlag = 1;
-          input = new InputForm(width/2,height/2+100);
-          time = new Timer();
+          makingObjectsForReset();
           //you can change default time 
-          time.changeTime(20);
+          time.changeTime(timeLimits);
+          questionNum = 0;
       }
       retryButton.display();
       if(mousePressed == true && retryButton.isInside()){
           sceneControlFlag = 1;
-          input = new InputForm(width/2,height/2+100);
-          time = new Timer();
+          makingObjectsForReset();
           //you can change default time 
-          time.changeTime(20);
+          time.changeTime(timeLimits);
+          questionNum = 0;
       }
       toTitleButton.display();
       if(mousePressed == true && toTitleButton.isInside()){
           sceneControlFlag = 0;
+          questionNum = 0;
       }
   
     }else{
@@ -99,6 +108,12 @@ class SceneManager{
           sceneControlFlag = 0;
       }
     }
+  }
+  
+  void makingObjectsForReset(){
+    input = new InputForm(width/2,height/2+200);
+    typing = new TypingText(width/2,height/2+100);
+    time = new Timer();
   }
       
 }

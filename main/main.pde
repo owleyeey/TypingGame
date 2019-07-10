@@ -2,23 +2,14 @@
 import java.util.HashSet;
 
 SceneManager s;
-TypingText typing;
 HashSet<KeyManipulateObserver> observers;
 
 void setup(){
   size(600,600);
   
-  int typinglength;
-  typing = new TypingText();
-  typinglength = typing.getTextLength();
-  
-  s = new SceneManager(typinglength);
+  s = new SceneManager();
   
   observers = new HashSet<KeyManipulateObserver>();
-  
-  for(int i=0; i<typinglength; i++){
-    s.typingTextList[i] = typing.text[i];
-  }
   
   //setup font to change japanese text's size 
   PFont font = createFont("MS ゴシック",32);
