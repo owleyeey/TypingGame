@@ -10,11 +10,13 @@ class Button{
     y = y0;
     w = w0;
     h = h0;
-    buttonText = s0;
-    buttonColorIn = color(236,104,203);
-    buttonColorOut =color(255);
-    textColorIn = color(255);
-    textColorOut = color(0);
+    
+    buttonText     = s0;
+    
+    buttonColorIn  = color(236,104,203);
+    buttonColorOut = color(255);
+    textColorIn    = color(255);
+    textColorOut   = color(0);
   }
   
   // Is cursor INSIDE the button?

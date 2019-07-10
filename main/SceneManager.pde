@@ -1,8 +1,8 @@
 class SceneManager{
 
   TypingText typing;  
-  InputForm input;
-  Timer time;
+  InputForm  input;
+  Timer      time;
   
   JudgeAnswer judge = new JudgeAnswer();
   
@@ -14,7 +14,7 @@ class SceneManager{
 
   
   //flag to control scene 
-  int sceneControlFlag = 0;
+  String sceneControlFlag = "startMenu";
   
   //setup the default question number
   int questionNum = 0;
@@ -24,28 +24,21 @@ class SceneManager{
 
   //function to display scenes
   void playScene(){
-    //##################################//
-    //#  sceneControlFlag manual       #//
-    //#  value == 0  => start     menu #//
-    //#  value == 1  => gameplay  menu #//
-    //#  value == 2  => gameover  menu #//
-    //#  value == 3  => gameclear menu #//
-    //##################################//
     
-    if(sceneControlFlag == 0){
+    if(sceneControlFlag == "startMenu"){
       fill(0);
       textSize(50);
       textAlign(CENTER);
       text("描き歌タイピング",width/2,height/5);
       startMenuButton.display();
       if(mousePressed == true && startMenuButton.isInside()){
-        sceneControlFlag = 1;
+        sceneControlFlag = "gameMenu";
         makingObjectsForReset();
         //you can change default time 
         time.changeTime(timeLimits);
       }
       
-    }else if(sceneControlFlag == 1){
+    }else if(sceneControlFlag == "gameMenu"){
       line(0,height/2,width,height/2);
       time.display();
       time.updateTime();
@@ -59,13 +52,14 @@ class SceneManager{
       if(judge.isCorrect(input.label.text,typing.text[questionNum]) && questionNum < typing.text.length){
         //reset input text
         input.label.text = "";
-        if(questionNum != typing.text.length-1){
-          questionNum += 1;
+        questionNum += 1;
+        if(questionNum == typing.text.length){
+          sceneControlFlag = "gameclearMenu";
         }
       }
       
-      if(time.isTimeUp()) sceneControlFlag = 2;
-    }else if(sceneControlFlag == 2){
+      if(time.isTimeUp()) sceneControlFlag = "gameoverMenu";
+    }else if(sceneControlFlag == "gameoverMenu"){
       //make game over menu here
       
       line(0,height/2,width,height/2);
@@ -77,7 +71,7 @@ class SceneManager{
       if(mousePressed == true && easingButton.isInside()){
         // ease the difficulty (not done yet)
         
-          sceneControlFlag = 1;
+          sceneControlFlag = "gameMenu";
           makingObjectsForReset();
           //you can change default time 
           time.changeTime(timeLimits);
@@ -85,7 +79,7 @@ class SceneManager{
       }
       retryButton.display();
       if(mousePressed == true && retryButton.isInside()){
-          sceneControlFlag = 1;
+          sceneControlFlag = "gameMenu";
           makingObjectsForReset();
           //you can change default time 
           time.changeTime(timeLimits);
@@ -93,7 +87,7 @@ class SceneManager{
       }
       toTitleButton.display();
       if(mousePressed == true && toTitleButton.isInside()){
-          sceneControlFlag = 0;
+          sceneControlFlag = "startMenu";
           questionNum = 0;
       }
   
@@ -105,7 +99,8 @@ class SceneManager{
       text("ゲームクリア！！",width/2,height/2+50);
       gameclearMenuButton.display();
       if(mousePressed == true && gameclearMenuButton.isInside()){
-          sceneControlFlag = 0;
+          sceneControlFlag = "startMenu";
+          questionNum = 0;
       }
     }
   }

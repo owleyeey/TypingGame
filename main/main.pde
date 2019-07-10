@@ -1,13 +1,13 @@
 //**************main****************/
 import java.util.HashSet;
 
-SceneManager s;
+SceneManager scene;
 HashSet<KeyManipulateObserver> observers;
 
 void setup(){
   size(600,600);
   
-  s = new SceneManager();
+  scene     = new SceneManager();
   
   observers = new HashSet<KeyManipulateObserver>();
   
@@ -20,7 +20,7 @@ void setup(){
 
 void draw(){
   background(255);
-  s.playScene();
+  scene.playScene();
 }
 
 void keyPressed() {
