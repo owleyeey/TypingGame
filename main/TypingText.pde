@@ -2,7 +2,14 @@
 
 class TypingText{
   int x,y;
-  String[] text = {"apple","banana","orange"};
+  String[] text = {"a",//"maruiosaragaarimashita"
+                   "a",//"maruiodangonosemashita"
+                   "a",//"sorekarakuroimamehutatsu"
+                   "a",//"mayugepikupikuoisisou"
+                   "a",//"hoppetapukunntohukurande"
+                   "a",//"nikkoriwaratte"
+                   "a",//"annpannmann"
+                  };
   
   TypingText(int x,int y){
     this.x = x;
@@ -20,7 +27,7 @@ class TypingText{
   
   public void display(int num){
     stroke(0);
-    textSize(50);
+    textSize(30);
     textAlign(CENTER);
     text(text[num], x, y);
   }

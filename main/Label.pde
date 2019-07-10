@@ -27,7 +27,7 @@ class Label {
   
   public void display() {
     stroke(0);
-    textSize(50);
+    textSize(30);
     textAlign(CENTER);
     text(text, x, y);
   }

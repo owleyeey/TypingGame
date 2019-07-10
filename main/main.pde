@@ -5,7 +5,7 @@ SceneManager scene;
 HashSet<KeyManipulateObserver> observers;
 
 void setup(){
-  size(600,600);
+  size(600,800);
   
   scene     = new SceneManager();
   

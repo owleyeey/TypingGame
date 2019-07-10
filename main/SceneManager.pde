@@ -1,17 +1,17 @@
 class SceneManager{
-
+  
   TypingText typing;  
   InputForm  input;
   Timer      time;
   
   JudgeAnswer judge = new JudgeAnswer();
   
-  Button startMenuButton     = new Button(width/2,height/2,200,40,"スタート");
+  Button startMenuButton     = new Button(width/2,height * 2/3,200,40,"スタート");
   Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
   Button easingButton        = new Button(width/2,height/2+100,240,40,"難易度を下げてリトライ");
   Button retryButton         = new Button(width/2,height/2+150,240,40,"リトライ");
   Button toTitleButton       = new Button(width/2,height/2+200,240,40,"スタート画面に戻る");
-
+  Charactor chara            = new Charactor(7);
   
   //flag to control scene 
   String sceneControlFlag = "startMenu";
@@ -29,7 +29,7 @@ class SceneManager{
       fill(0);
       textSize(50);
       textAlign(CENTER);
-      text("描き歌タイピング",width/2,height/5);
+      text("描き歌タイピング",width/2,height/3);
       startMenuButton.display();
       if(mousePressed == true && startMenuButton.isInside()){
         sceneControlFlag = "gameMenu";
@@ -42,6 +42,7 @@ class SceneManager{
       line(0,height/2,width,height/2);
       time.display();
       time.updateTime();
+      chara.display();
       
       //display inputform
       input.display();
@@ -50,8 +51,12 @@ class SceneManager{
       
       //if inputtext are equal with question, add 1 to qustion number
       if(judge.isCorrect(input.label.text,typing.text[questionNum]) && questionNum < typing.text.length){
+        //update answer[]
+        chara.answers[questionNum] = 1;
+        
         //reset input text
         input.label.text = "";
+        
         questionNum += 1;
         if(questionNum == typing.text.length){
           sceneControlFlag = "gameclearMenu";
@@ -97,6 +102,7 @@ class SceneManager{
       textSize(50);
       textAlign(CENTER);
       text("ゲームクリア！！",width/2,height/2+50);
+      chara.display();
       gameclearMenuButton.display();
       if(mousePressed == true && gameclearMenuButton.isInside()){
           sceneControlFlag = "startMenu";
