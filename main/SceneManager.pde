@@ -1,86 +1,117 @@
 class SceneManager{
-  String[] typingTextList;
   
-  //this is a length of typing text
-  int typinglength;
+  TypingText  typing;  
+  InputForm   input;
+  Timer       time;
+  Charactor   chara;
+  AfterInput  afterinput;
   
-  SceneManager(int lengths){
-    typinglength = lengths;
-    typingTextList = new String[typinglength];
-  }
+  JudgeAnswer judge      = new JudgeAnswer();
   
-
+  Button startMenuButton     = new Button(width/2,height * 2/3,200,40,"スタート");
+  Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
+  Button easingButton        = new Button(width/2,height/2+100,240,40,"難易度を下げてリトライ");
+  Button retryButton         = new Button(width/2,height/2+150,240,40,"リトライ");
+  Button toTitleButton       = new Button(width/2,height/2+200,240,40,"スタート画面に戻る");
+  
   //flag to control scene 
-  int sceneControlFlag = 0;
+  String sceneControlFlag = "startMenu";
+  
+  //setup the default question number
+  int questionNum = 0;
+  
+  //setup the time limits
+  int timeLimits = 20; //4
+  
+  //setup the delay time when a player push a button
+  int delayTime = 1000;
 
   //function to display scenes
   void playScene(){
-    //##################################//
-    //#  sceneControlFlag manual       #//
-    //#  value == 0  => start     menu #//
-    //#  value == 1  => gameplay  menu #//
-    //#  value == 2  => gameover  menu #//
-    //#  value == 3  => gameclear menu #//
-    //##################################//
     
-    if(sceneControlFlag == 0){
+    if(sceneControlFlag == "startMenu"){
       fill(0);
       textSize(50);
       textAlign(CENTER);
-      text("描き歌タイピング",width/2,height/5);
-      button(width/2,height/2,width/2,height/2+10,"スタート");
-      if(isMouseInside(width/2,height/2,160,40)){
-        if(mousePressed == true){
-          sceneControlFlag += 1;
-        }
+      text("描き歌タイピング",width/2,height/3);
+      startMenuButton.display();
+      if(mousePressed == true && startMenuButton.isInside()){
+        delay(delayTime);
+        sceneControlFlag = "gameMenu";
+        makingObjectsForReset(); 
+        time.changeTime(timeLimits);
       }
       
-    }else if(sceneControlFlag == 1){
+    }else if(sceneControlFlag == "gameMenu"){
       line(0,height/2,width,height/2);
       time.display();
       time.updateTime();
+      chara.display();
       
-    }else if(sceneControlFlag == 2){
+      //display inputform
+      input.display();
+      //display question
+      typing.display(questionNum);
+
+      afterinput.afterInputProcess();
+      
+      if(time.isTimeUp()){ 
+        sceneControlFlag = "gameoverMenu";
+      }
+      
+    }else if(sceneControlFlag == "gameoverMenu"){
       //make game over menu here
+      chara.display();
       
+      line(0,height/2,width,height/2);
+      fill(0);
+      textSize(50);
+      textAlign(CENTER);
+      text("ゲームオーバー",width/2,height/2+50);
+      easingButton.display();
+      if(mousePressed == true && easingButton.isInside()){
+        // ease the difficulty (not done yet)
+          delay(delayTime);
+          sceneControlFlag = "gameMenu";
+          makingObjectsForReset(); 
+          time.changeTime(timeLimits);
+          questionNum = 0;
+      }
+      retryButton.display();
+      if(mousePressed == true && retryButton.isInside()){
+          delay(delayTime);
+          sceneControlFlag = "gameMenu";
+          makingObjectsForReset(); 
+          time.changeTime(timeLimits);
+          questionNum = 0;
+      }
+      toTitleButton.display();
+      if(mousePressed == true && toTitleButton.isInside()){
+          sceneControlFlag = "startMenu";
+          questionNum = 0;
+      }
+  
     }else{
       line(0,height/2,width,height/2);
       fill(0);
       textSize(50);
       textAlign(CENTER);
       text("ゲームクリア！！",width/2,height/2+50);
-      button(width/2,height/2+100,width/2,height/2+110,"スタート画面に戻る");
+      chara.display();
+      gameclearMenuButton.display();
+      if(mousePressed == true && gameclearMenuButton.isInside()){
+          sceneControlFlag = "startMenu";
+          questionNum = 0;
+      }
     }
   }
   
-  //please use this function when you want to make a button
-  //rectMode is setting by "CENTER"
-  void button(int rectX,int rectY,int textX,int textY,String s){
-      fill(255);
-      if(isMouseInside(rectX,rectY,200,40) == true){
-        fill(255,0,0);
-      }
-      rect(rectX,rectY,200,40);
-      fill(0);
-      if(isMouseInside(rectX,rectY,200,40) == true){
-        fill(255);
-      }
-      textSize(20);
-      text(s,textX,textY);
+  void makingObjectsForReset(){
+    input      = new InputForm(width/2,height/2+200);
+    typing     = new TypingText(width/2,height/2+100);
+    time       = new Timer();
+    chara      = new Charactor(7);
+    afterinput = new AfterInput();
   }
-  
-  //function to check that mouse cursor is inside or outside 
-  Boolean isMouseInside(int rectX,int rectY,int rectW,int rectH){
-    if(mouseX >= rectX-rectW/2 && mouseX <= rectX+rectW/2 && mouseY >= rectY-rectH/2 && mouseY <= rectY+rectH/2){
-      return true;
-    }
-    return false;
-  }
-  
-  
-  void drawTitleText(){
-  }
-  
-  void isKeyPressed(){
-  }
+      
 }

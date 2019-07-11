@@ -1,29 +1,15 @@
 //**************main****************/
 import java.util.HashSet;
 
-SceneManager s;
-Timer time;
-TypingText typing;
+SceneManager scene;
 HashSet<KeyManipulateObserver> observers;
 
 void setup(){
-  size(600,600);
+  size(600,800);
   
-  int typinglength;
-  typing = new TypingText();
-  typinglength = typing.getTextLength();
-  
-  s = new SceneManager(typinglength);
-  time = new Timer();
+  scene     = new SceneManager();
   
   observers = new HashSet<KeyManipulateObserver>();
-  
-  for(int i=0; i<typinglength; i++){
-    s.typingTextList[i] = typing.text[i];
-  }
-  
-  //you can change default time 
-  time.changeTime(20);
   
   //setup font to change japanese text's size 
   PFont font = createFont("MS ゴシック",32);
@@ -34,7 +20,7 @@ void setup(){
 
 void draw(){
   background(255);
-  s.playScene();
+  scene.playScene();
 }
 
 void keyPressed() {
