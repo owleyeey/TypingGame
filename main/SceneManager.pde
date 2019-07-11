@@ -38,7 +38,7 @@ class SceneManager{
       fill(0);
       textSize(50);
       textAlign(CENTER);
-      text("描き歌タイピング",width/2,height/3);
+      text("早打ち！！\nえかきうタイピング",width/2,height/3);
       startMenuButton.display();
       if(mousePressed == true && startMenuButton.isInside()){
         delay(delayTime);
