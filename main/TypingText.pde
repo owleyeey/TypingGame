@@ -11,6 +11,15 @@ class TypingText{
                    "a",//"annpannmann"
                   };
   
+  String[] hiraganaText = {"まるいおさらがありました",
+                           "まるいおだんごのせました",
+                           "それからくろいまめふたつ",
+                           "まゆげぴくぴくおいしそう",
+                           "ほっぺたぷくんとふくらんで",
+                           "にっこりわらって",
+                           "あんぱんまん"
+                          };
+  
   TypingText(int x,int y){
     this.x = x;
     this.y = y;
@@ -30,5 +39,6 @@ class TypingText{
     textSize(30);
     textAlign(CENTER);
     text(text[num], x, y);
+    text(hiraganaText[num], x, y - 50);
   }
 }
