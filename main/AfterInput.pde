@@ -16,6 +16,10 @@ class AfterInput{
         scene.sceneControlFlag = "gameclearMenu";
       }
     }else{
+      scene.textColor = color(255,0,0);
+      scene.input.resetText();
+      scene.textColor = color(0);
     }
+    
   }
 }

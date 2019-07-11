@@ -25,6 +25,8 @@ class SceneManager{
   
   //setup the delay time when a player push a button
   int delayTime = 1000;
+  
+  color textColor = color(0);
 
   //function to display scenes
   void playScene(){
@@ -48,12 +50,18 @@ class SceneManager{
       time.updateTime();
       chara.display();
       
-      //display inputform
-      input.display();
       //display question
       typing.display(questionNum);
-
-      afterinput.afterInputProcess();
+      
+      fill(textColor);
+      //display inputform
+      input.display();
+      
+      if(keyPressed == true){
+        if(key == ENTER){
+          afterinput.afterInputProcess();
+        }
+      }
       
       if(time.isTimeUp()){ 
         sceneControlFlag = "gameoverMenu";
