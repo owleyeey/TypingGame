@@ -34,11 +34,31 @@ class TypingText{
     return text.length;
   }
   
-  public void display(int num){
-    stroke(0);
+  public void display(int num, String inputtedText){
+    int textLeftX = (width / 2) - (int)(9 * text[num].length());
+    displayCurrentQuestion(textLeftX, num);
+    displayInputtedText(textLeftX, inputtedText);
+    displayHiraganaText(num);
+  }
+  
+  private void displayCurrentQuestion(int leftX, int num) {
+    fill(200);
+    textSize(30);
+    textAlign(LEFT);
+    text(text[num], leftX, y);
+  }
+  
+  private void displayInputtedText(int leftX, String inputtedText){
+    fill(0);
+    textSize(30);
+    textAlign(LEFT);
+    text(inputtedText, leftX, y);
+  } 
+  
+  private void displayHiraganaText(int num){
+    fill(0);
     textSize(30);
     textAlign(CENTER);
-    text(text[num], x, y);
     text(hiraganaText[num], x, y - 50);
   }
 }
