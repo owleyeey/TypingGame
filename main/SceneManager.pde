@@ -8,7 +8,7 @@ class SceneManager{
   
   JudgeAnswer judge      = new JudgeAnswer();
   
-  Button startMenuButton     = new Button(width/2,height * 2/3,200,40,"スタート");
+  Button startMenuButton     = new Button(width/2,height/2,200,40,"スタート");
   Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
   Button easingButton        = new Button(width/2,height/2+100,240,40,"難易度を下げてリトライ");
   Button retryButton         = new Button(width/2,height/2+150,240,40,"リトライ");
@@ -35,10 +35,11 @@ class SceneManager{
   void playScene(){
     
     if(sceneControlFlag == "startMenu"){
+      image(imgTitle, -240, -100);
       fill(0);
       textSize(50);
       textAlign(CENTER);
-      text("早打ち！！\nえかきうタイピング",width/2,height/3);
+      text("早打ち！！\nえかきうタイピング",width/2,height/4);
       startMenuButton.display();
       if(mousePressed == true && startMenuButton.isInside()){
         delay(delayTime);
@@ -82,7 +83,7 @@ class SceneManager{
       
     }else if(sceneControlFlag == "gameoverMenu"){
       //make game over menu here
-      chara.display();
+      image(imgLose, 200, 0);
       
       line(0,height/2,width,height/2);
       fill(0);
