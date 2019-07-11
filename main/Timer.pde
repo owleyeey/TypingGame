@@ -1,4 +1,5 @@
 /********************************************************
+Timer : draw remaining time
 --parameter--
   second : remaining time 
 
