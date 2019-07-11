@@ -3,6 +3,7 @@ class SceneManager{
   TypingText typing;  
   InputForm  input;
   Timer      time;
+  Charactor  chara;
   
   JudgeAnswer judge = new JudgeAnswer();
   
@@ -11,7 +12,6 @@ class SceneManager{
   Button easingButton        = new Button(width/2,height/2+100,240,40,"難易度を下げてリトライ");
   Button retryButton         = new Button(width/2,height/2+150,240,40,"リトライ");
   Button toTitleButton       = new Button(width/2,height/2+200,240,40,"スタート画面に戻る");
-  Charactor chara            = new Charactor(7);
   
   //flag to control scene 
   String sceneControlFlag = "startMenu";
@@ -21,6 +21,9 @@ class SceneManager{
   
   //setup the time limits
   int timeLimits = 20;
+  
+  //setup the delay time when a player push a button
+  int delayTime = 1000;
 
   //function to display scenes
   void playScene(){
@@ -32,9 +35,9 @@ class SceneManager{
       text("描き歌タイピング",width/2,height/3);
       startMenuButton.display();
       if(mousePressed == true && startMenuButton.isInside()){
+        delay(delayTime);
         sceneControlFlag = "gameMenu";
-        makingObjectsForReset();
-        //you can change default time 
+        makingObjectsForReset(); 
         time.changeTime(timeLimits);
       }
       
@@ -49,8 +52,8 @@ class SceneManager{
       //display question
       typing.display(questionNum);
       
-      //if inputtext are equal with question, add 1 to qustion number
-      if(judge.isCorrect(input.getText(),typing.text[questionNum]) && questionNum < typing.text.length){
+      //judge that input text are equal with question or unequal
+      if(judge.isCorrect(input.getText(),typing.text[questionNum]) && questionNum < typing.getTextLength()){
         //update answer[]
         chara.answers[questionNum] = 1;
         
@@ -58,14 +61,21 @@ class SceneManager{
         input.resetText();
         
         questionNum += 1;
-        if(questionNum == typing.text.length){
+        
+        time.changeTime(timeLimits);
+        
+        if(questionNum == typing.getTextLength()){
           sceneControlFlag = "gameclearMenu";
         }
       }
       
-      if(time.isTimeUp()) sceneControlFlag = "gameoverMenu";
+      if(time.isTimeUp()){ 
+        sceneControlFlag = "gameoverMenu";
+      }
+      
     }else if(sceneControlFlag == "gameoverMenu"){
       //make game over menu here
+      chara.display();
       
       line(0,height/2,width,height/2);
       fill(0);
@@ -75,18 +85,17 @@ class SceneManager{
       easingButton.display();
       if(mousePressed == true && easingButton.isInside()){
         // ease the difficulty (not done yet)
-        
+          delay(delayTime);
           sceneControlFlag = "gameMenu";
-          makingObjectsForReset();
-          //you can change default time 
+          makingObjectsForReset(); 
           time.changeTime(timeLimits);
           questionNum = 0;
       }
       retryButton.display();
       if(mousePressed == true && retryButton.isInside()){
+          delay(delayTime);
           sceneControlFlag = "gameMenu";
-          makingObjectsForReset();
-          //you can change default time 
+          makingObjectsForReset(); 
           time.changeTime(timeLimits);
           questionNum = 0;
       }
@@ -112,9 +121,10 @@ class SceneManager{
   }
   
   void makingObjectsForReset(){
-    input = new InputForm(width/2,height/2+200);
+    input  = new InputForm(width/2,height/2+200);
     typing = new TypingText(width/2,height/2+100);
-    time = new Timer();
+    time   = new Timer();
+    chara  = new Charactor(7);
   }
       
 }
