@@ -2,13 +2,13 @@
 
 class TypingText{
   int x,y;
-  String[] text = {"abcd",//"maruiosaragaarimashita"
-                   "abcd",//"maruiodangonosemashita"
-                   "abcd",//"sorekarakuroimamehutatsu"
-                   "abcd",//"mayugepikupikuoisisou"
-                   "abcd",//"hoppetapukunntohukurande"
-                   "abcd",//"nikkoriwaratte"
-                   "abcd",//"annpannmann"
+  String[] text = {"maruiosaragaarimashita",
+                   "maruiodangonosemashita",
+                   "sorekarakuroimamehutatsu",
+                   "mayugepikupikuoisisou",
+                   "hoppetapukunntohukurande",
+                   "nikkoriwaratte",
+                   "annpannmann",
                   };
   
   String[] hiraganaText = {"まるいおさらがありました",
