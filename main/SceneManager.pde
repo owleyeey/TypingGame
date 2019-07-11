@@ -54,13 +54,10 @@ class SceneManager{
       //display question
       typing.display(questionNum);
       
-<<<<<<< HEAD
-=======
       fill(textColor);
       //display inputform
       input.display();
       
->>>>>>> yun
       if(keyPressed == true){
         if(key == ENTER){
           afterinput.afterInputProcess();
