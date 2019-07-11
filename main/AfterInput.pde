@@ -9,6 +9,8 @@ class AfterInput{
       scene.input.resetText();
         
       scene.questionNum += 1;
+      
+      scene.mistakeMessageFlag = 0;
         
       scene.time.changeTime(scene.timeLimits);
         
@@ -16,9 +18,7 @@ class AfterInput{
         scene.sceneControlFlag = "gameclearMenu";
       }
     }else{
-      scene.textColor = color(255,0,0);
-      scene.input.resetText();
-      scene.textColor = color(0);
+      scene.mistakeMessageFlag = 1;
     }
     
   }

@@ -29,7 +29,7 @@ class SceneManager{
   //setup the delay time when a player push a button
   int delayTime = 1000;
   
-  color textColor = color(0);
+  int mistakeMessageFlag = 0;
 
   //function to display scenes
   void playScene(){
@@ -56,14 +56,21 @@ class SceneManager{
       //display question
       typing.display(questionNum, input.getText());
 
-      fill(textColor);
       //display inputform
       input.display();
       
       if(keyPressed == true){
         if(key == ENTER){
-          afterinput.afterInputProcess();
+          if(input.getText() != ""){
+            afterinput.afterInputProcess();
+          }
         }
+      }
+      
+      if(mistakeMessageFlag == 1){
+        fill(255,0,0);
+        textSize(20);
+        text("×違います",width/2,height/2+150);
       }
       
       if(time.isTimeUp()){ 
@@ -89,6 +96,7 @@ class SceneManager{
           makingObjectsForReset(); 
           time.changeTime(timeLimits);
           questionNum = 0;
+          mistakeMessageFlag = 0;
       }
       retryButton.display();
       if(mousePressed == true && retryButton.isInside()){
@@ -97,11 +105,13 @@ class SceneManager{
           makingObjectsForReset(); 
           time.changeTime(timeLimits);
           questionNum = 0;
+          mistakeMessageFlag = 0;
       }
       toTitleButton.display();
       if(mousePressed == true && toTitleButton.isInside()){
           sceneControlFlag = "startMenu";
           questionNum = 0;
+          mistakeMessageFlag = 0;
       }
   
     }else{
@@ -115,6 +125,7 @@ class SceneManager{
       if(mousePressed == true && gameclearMenuButton.isInside()){
           sceneControlFlag = "startMenu";
           questionNum = 0;
+          mistakeMessageFlag = 0;
       }
     }
   }
