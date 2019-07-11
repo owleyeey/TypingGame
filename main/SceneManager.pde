@@ -52,8 +52,12 @@ class SceneManager{
       input.display();
       //display question
       typing.display(questionNum);
-
-      afterinput.afterInputProcess();
+      
+      if(keyPressed == true){
+        if(key == ENTER){
+          afterinput.afterInputProcess();
+        }
+      }
       
       if(time.isTimeUp()){ 
         sceneControlFlag = "gameoverMenu";

@@ -16,6 +16,7 @@ class AfterInput{
         scene.sceneControlFlag = "gameclearMenu";
       }
     }else{
+      
     }
   }
 }
