@@ -35,16 +35,8 @@ class Label {
   public String getText() {
     return text;
   }
-<<<<<<< HEAD
-
-  public void resetText() {
-    text = "";
-  }
-}
-=======
   
   public void resetText(){
     text = "";
   }
 }
->>>>>>> 47e751e9eab5507f8187f93b86121be7477b1ec6

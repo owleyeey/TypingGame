@@ -26,11 +26,7 @@ class InputForm {
   public String getText() {
     return label.getText();
   }
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 47e751e9eab5507f8187f93b86121be7477b1ec6
   public void resetText() {
     label.resetText();
   }
