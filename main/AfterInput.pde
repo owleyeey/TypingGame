@@ -16,6 +16,7 @@ class AfterInput{
         
       if(scene.questionNum == scene.typing.getTextLength()){
         scene.sceneControlFlag = "gameclearMenu";
+        scene.input.removeInputForm();
       }
     }else{
       scene.mistakeMessageFlag = 1;

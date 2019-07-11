@@ -3,7 +3,7 @@ import java.util.HashSet;
 
 SceneManager scene;
 KeyManipulateObserver nullObserver = new NullObserver();
-HashSet<KeyManipulateObserver> observers;
+KeyManipulateObserver observerHandler = nullObserver;
 PImage imgTitle, imgLose;
 final String GAME_TITLE = "早打ち！！えかきうタイピング";
 
@@ -12,8 +12,6 @@ void setup(){
   surface.setTitle(GAME_TITLE);
   
   scene     = new SceneManager();
-  
-  observers = new HashSet<KeyManipulateObserver>();
   
   imgTitle = loadImage("title.jpg");
   imgLose  = loadImage("lose.png");
@@ -30,13 +28,17 @@ void draw(){
 }
 
 void keyPressed() {
-  for(KeyManipulateObserver elem : observers) {
-    elem.onPress(keyCode);
-  }
+  observerHandler.onPress(keyCode);
 }
 
 void keyReleased() {
-  for(KeyManipulateObserver elem : observers) {
-    elem.onRelease(keyCode);
+  observerHandler.onRelease(keyCode);
+}
+
+void setObserver(KeyManipulateObserver o) {
+  if(o == null) {
+    observerHandler = nullObserver;
+  } else {
+    observerHandler = o;
   }
 }

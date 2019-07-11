@@ -79,6 +79,7 @@ class SceneManager{
       
       if(time.isTimeUp()){ 
         sceneControlFlag = "gameoverMenu";
+        input.removeInputForm();
       }
       
     }else if(sceneControlFlag == "gameoverMenu"){
