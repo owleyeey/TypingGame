@@ -54,8 +54,8 @@ class SceneManager{
       chara.display();
       
       //display question
-      typing.display(questionNum);
-      
+      typing.display(questionNum, input.getText());
+
       fill(textColor);
       //display inputform
       input.display();
