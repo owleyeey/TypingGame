@@ -3,9 +3,11 @@ import java.util.HashSet;
 
 SceneManager scene;
 HashSet<KeyManipulateObserver> observers;
+final String GAME_TITLE = "早打ち！！えかきうタイピング";
 
 void setup(){
   size(600,800);
+  surface.setTitle(GAME_TITLE);
   
   scene     = new SceneManager();
   
