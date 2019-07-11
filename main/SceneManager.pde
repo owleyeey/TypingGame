@@ -1,11 +1,12 @@
 class SceneManager{
   
-  TypingText typing;  
-  InputForm  input;
-  Timer      time;
-  Charactor  chara;
+  TypingText  typing;  
+  InputForm   input;
+  Timer       time;
+  Charactor   chara;
+  AfterInput  afterinput;
   
-  JudgeAnswer judge = new JudgeAnswer();
+  JudgeAnswer judge      = new JudgeAnswer();
   
   Button startMenuButton     = new Button(width/2,height * 2/3,200,40,"スタート");
   Button gameclearMenuButton = new Button(width/2,height/2+100,200,40,"スタート画面に戻る");
@@ -20,7 +21,7 @@ class SceneManager{
   int questionNum = 0;
   
   //setup the time limits
-  int timeLimits = 20;
+  int timeLimits = 20; //4
   
   //setup the delay time when a player push a button
   int delayTime = 1000;
@@ -51,23 +52,8 @@ class SceneManager{
       input.display();
       //display question
       typing.display(questionNum);
-      
-      //judge that input text are equal with question or unequal
-      if(judge.isCorrect(input.getText(),typing.text[questionNum]) && questionNum < typing.getTextLength()){
-        //update answer[]
-        chara.answers[questionNum] = 1;
-        
-        //reset input text
-        input.resetText();
-        
-        questionNum += 1;
-        
-        time.changeTime(timeLimits);
-        
-        if(questionNum == typing.getTextLength()){
-          sceneControlFlag = "gameclearMenu";
-        }
-      }
+
+      afterinput.afterInputProcess();
       
       if(time.isTimeUp()){ 
         sceneControlFlag = "gameoverMenu";
@@ -121,10 +107,11 @@ class SceneManager{
   }
   
   void makingObjectsForReset(){
-    input  = new InputForm(width/2,height/2+200);
-    typing = new TypingText(width/2,height/2+100);
-    time   = new Timer();
-    chara  = new Charactor(7);
+    input      = new InputForm(width/2,height/2+200);
+    typing     = new TypingText(width/2,height/2+100);
+    time       = new Timer();
+    chara      = new Charactor(7);
+    afterinput = new AfterInput();
   }
       
 }
