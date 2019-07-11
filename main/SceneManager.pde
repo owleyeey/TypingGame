@@ -22,6 +22,8 @@ class SceneManager{
   
   //setup the time limits
   int timeLimits = 4; //4
+  
+  // A parameter "timeLimits" NEVER has bigger value than this one.
   int EasiestLimit = 10;
   
   //setup the delay time when a player push a button
