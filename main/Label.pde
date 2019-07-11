@@ -35,4 +35,8 @@ class Label {
   public String getText() {
     return text;
   }
+  
+  public void resetText(){
+    text = "";
+  }
 }

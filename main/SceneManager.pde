@@ -50,12 +50,12 @@ class SceneManager{
       typing.display(questionNum);
       
       //if inputtext are equal with question, add 1 to qustion number
-      if(judge.isCorrect(input.label.text,typing.text[questionNum]) && questionNum < typing.text.length){
+      if(judge.isCorrect(input.getText(),typing.text[questionNum]) && questionNum < typing.text.length){
         //update answer[]
         chara.answers[questionNum] = 1;
         
         //reset input text
-        input.label.text = "";
+        input.resetText();
         
         questionNum += 1;
         if(questionNum == typing.text.length){
