@@ -2,6 +2,7 @@
 import java.util.HashSet;
 
 SceneManager scene;
+KeyManipulateObserver nullObserver = new NullObserver();
 HashSet<KeyManipulateObserver> observers;
 PImage imgTitle, imgLose;
 final String GAME_TITLE = "早打ち！！えかきうタイピング";
