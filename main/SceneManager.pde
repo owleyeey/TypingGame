@@ -21,7 +21,7 @@ class SceneManager{
   int questionNum = 0;
   
   //setup the time limits
-  int timeLimits = 10; 
+  int timeLimits = 6; 
   
   // A parameter "timeLimits" NEVER has bigger value than this one.
   int EasiestLimit = 10;
