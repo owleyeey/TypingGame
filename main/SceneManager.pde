@@ -21,10 +21,15 @@ class SceneManager{
   int questionNum = 0;
   
   //setup the time limits
-  int timeLimits = 20; //4
+  int timeLimits = 4; //4
+  
+  // A parameter "timeLimits" NEVER has bigger value than this one.
+  int EasiestLimit = 10;
   
   //setup the delay time when a player push a button
   int delayTime = 1000;
+  
+  color textColor = color(0);
 
   //function to display scenes
   void playScene(){
@@ -48,12 +53,18 @@ class SceneManager{
       time.updateTime();
       chara.display();
       
-      //display inputform
-      input.display();
       //display question
       typing.display(questionNum);
-
-      afterinput.afterInputProcess();
+      
+      fill(textColor);
+      //display inputform
+      input.display();
+      
+      if(keyPressed == true){
+        if(key == ENTER){
+          afterinput.afterInputProcess();
+        }
+      }
       
       if(time.isTimeUp()){ 
         sceneControlFlag = "gameoverMenu";
@@ -71,6 +82,8 @@ class SceneManager{
       easingButton.display();
       if(mousePressed == true && easingButton.isInside()){
         // ease the difficulty (not done yet)
+          timeLimits = timeLimits + 1;
+          if(timeLimits > EasiestLimit) timeLimits = EasiestLimit;
           delay(delayTime);
           sceneControlFlag = "gameMenu";
           makingObjectsForReset(); 
