@@ -21,7 +21,7 @@ class SceneManager{
   int questionNum = 0;
   
   //setup the time limits
-  int timeLimits = 6; //4
+  int timeLimits = 10; 
   
   // A parameter "timeLimits" NEVER has bigger value than this one.
   int EasiestLimit = 10;
@@ -47,7 +47,10 @@ class SceneManager{
         time.changeTime(timeLimits);
       }
       
-    }else if(sceneControlFlag == "gameMenu"){
+    }else if(sceneControlFlag == "gameMenu"){  
+      noStroke();
+      fill(250, 230, 210, 120);
+      rect(width/2, height*3/4, width, height/2);
       line(0,height/2,width,height/2);
       time.display();
       time.updateTime();

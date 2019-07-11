@@ -2,11 +2,11 @@
 
 class TypingText{
   int x,y;
-  String[] text = {"maruiosaragaarimashita",
-                   "maruiodangonosemashita",
-                   "sorekarakuroimamehutatsu",
+  String[] text = {"maruiosaragaarimasita",
+                   "maruiodanngonosemasita",
+                   "sorekarakuroimamehutatu",
                    "mayugepikupikuoisisou",
-                   "hoppetapukunntohukurande",
+                   "hoppetapukunntohukurannde",
                    "nikkoriwaratte",
                    "annpannmann",
                   };
