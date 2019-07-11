@@ -21,7 +21,8 @@ class SceneManager{
   int questionNum = 0;
   
   //setup the time limits
-  int timeLimits = 20; //4
+  int timeLimits = 4; //4
+  int EasiestLimit = 10;
   
   //setup the delay time when a player push a button
   int delayTime = 1000;
@@ -82,6 +83,8 @@ class SceneManager{
       easingButton.display();
       if(mousePressed == true && easingButton.isInside()){
         // ease the difficulty (not done yet)
+          timeLimits = timeLimits + 1;
+          if(timeLimits > EasiestLimit) timeLimits = EasiestLimit;
           delay(delayTime);
           sceneControlFlag = "gameMenu";
           makingObjectsForReset(); 

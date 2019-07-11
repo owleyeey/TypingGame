@@ -26,7 +26,7 @@ class InputForm {
   public String getText() {
     return label.getText();
   }
-  
+
   public void resetText() {
     label.resetText();
   }
