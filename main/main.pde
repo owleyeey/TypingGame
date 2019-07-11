@@ -1,6 +1,4 @@
 //**************main****************/
-import java.util.HashSet;
-
 SceneManager scene;
 KeyManipulateObserver nullObserver = new NullObserver();
 KeyManipulateObserver observerHandler = nullObserver;
