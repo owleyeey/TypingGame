@@ -2,22 +2,20 @@
 
 class TypingText{
   int x,y;
-  String[] text = {"maruiosaragaarimasita",
-                   "maruiodanngonosemasita",
-                   "sorekarakuroimamehutatu",
-                   "mayugepikupikuoisisou",
-                   "hoppetapukunntohukurannde",
-                   "nikkoriwaratte",
-                   "annpannmann",
+  String[] text = {"ookiimarugahitotu",
+                   "ookiimarugahutatu",
+                   "kuromamehutatuarimasite",
+                   "kinoedagaotiteruyo",
+                   "kuroibotanwohutatutukereba",
+                   "yukidarumanodekiagari",
                   };
   
-  String[] hiraganaText = {"まるいおさらがありました",
-                           "まるいおだんごのせました",
-                           "それからくろいまめふたつ",
-                           "まゆげぴくぴくおいしそう",
-                           "ほっぺたぷくんとふくらんで",
-                           "にっこりわらって",
-                           "あんぱんまん"
+  String[] hiraganaText = {"おおきいまるがひとつ",
+                           "おおきいまるがふたつ",
+                           "くろまめふたつありまして",
+                           "きのえだがおちてるよ",
+                           "くろいボタンをふたつつければ",
+                           "ゆきだるまのできあがり"
                           };
   
   TypingText(int x,int y){

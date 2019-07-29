@@ -21,7 +21,7 @@ class SceneManager{
   int questionNum = 0;
   
   //setup the time limits
-  int timeLimits = 6; 
+  int timeLimits = 10; 
   
   // A parameter "timeLimits" NEVER has bigger value than this one.
   int EasiestLimit = 10;
@@ -117,6 +117,7 @@ class SceneManager{
           sceneControlFlag = "startMenu";
           questionNum = 0;
           mistakeMessageFlag = 0;
+          
       }
   
     }else{
@@ -131,6 +132,7 @@ class SceneManager{
           sceneControlFlag = "startMenu";
           questionNum = 0;
           mistakeMessageFlag = 0;
+          time.changeTime(6);
       }
     }
   }
